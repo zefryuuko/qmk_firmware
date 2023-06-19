@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #endif // ENCODER_ENABLE
 
 #ifdef RGB_MATRIX_ENABLE
-    void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         
         // FN Indicator
         if (get_highest_layer(layer_state) == _FN) {
@@ -106,5 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             rgb_matrix_set_color(LED_1, RGB_WHITE);     // TODO: Toggle Backlight
             rgb_matrix_set_color(LED_2, RGB_WHITE);     // TODO: Toggle Side Lighting
         }
+
+        return false;
     }
 #endif
