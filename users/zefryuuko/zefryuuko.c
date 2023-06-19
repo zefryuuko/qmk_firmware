@@ -1,4 +1,9 @@
-#include QMK_KEYBOARD_H
+#ifndef USERSPACE
+#define USERSPACE
+
+#include "quantum.h"
+
+// #include QMK_KEYBOARD_H
 #include "zefryuuko.h"
 
 // KEY CODES
@@ -18,17 +23,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (get_mods() & MOD_BIT(KC_LCTL)){
                     unregister_code(KC_LCTL);
                     register_code(KC_LGUI);
-                    register_code(KC_LSHIFT);
+                    register_code(KC_LSFT);
                     register_code(KC_4);
                     unregister_code(KC_LGUI);
-                    unregister_code(KC_LSHIFT);
+                    unregister_code(KC_LSFT);
                     unregister_code(KC_4);
                 } else {
                     register_code(KC_LGUI);
-                    register_code(KC_LSHIFT);
+                    register_code(KC_LSFT);
                     register_code(KC_3);
                     unregister_code(KC_LGUI);
-                    unregister_code(KC_LSHIFT);
+                    unregister_code(KC_LSFT);
                     unregister_code(KC_3);
                 }
             } else unregister_code16(keycode);
@@ -70,4 +75,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             rgb_matrix_set_color(index[i], red, green, blue);
         }
     }
+#endif
+
 #endif
