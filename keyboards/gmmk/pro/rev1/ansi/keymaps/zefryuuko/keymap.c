@@ -87,6 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         if (get_highest_layer(layer_state) == _FN) {
             rgb_matrix_set_keys(LED_LIST_ALL, ARRAYSIZE(LED_LIST_ALL), RGB_OFF);
             rgb_matrix_set_color(LED_FN, RGB_WHITE);
+            rgb_matrix_set_color(LED_ESC, RGB_RED);
 
             // Display Brightness (macOS)
             rgb_matrix_set_color(LED_F1, RGB_WHITE);
@@ -103,9 +104,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             rgb_matrix_set_color(LED_F12, RGB_WHITE);   // Next
 
             // RGB LED Mode Toggle
+            rgb_matrix_set_color(LED_INS, RGB_WHITE);   // Toggle Lighting
             rgb_matrix_set_color(LED_1, RGB_WHITE);     // TODO: Toggle Backlight
             rgb_matrix_set_color(LED_2, RGB_WHITE);     // TODO: Toggle Side Lighting
+
+            // RGB LED Effect Controls
+            rgb_matrix_set_color(LED_UP, RGB_WHITE);
+            rgb_matrix_set_color(LED_DOWN, RGB_WHITE);
+            rgb_matrix_set_color(LED_LEFT, RGB_WHITE);
+            rgb_matrix_set_color(LED_RIGHT, RGB_WHITE);
+
+            // Navigation Keys
+            rgb_matrix_set_color(LED_BSPC, RGB_WHITE);  // Delete
+
+            // NKRO
+            if (keymap_config.nkro) {
+                rgb_matrix_set_color(LED_N, RGB_CYAN);
+            } else {
+                rgb_matrix_set_color(LED_N, RGB_RED);
+            }
         }
+
+         if (host_keyboard_led_state().caps_lock) {
+            rgb_matrix_set_color(LED_SPC, RGB_GREEN);
+         }
 
         return false;
     }
