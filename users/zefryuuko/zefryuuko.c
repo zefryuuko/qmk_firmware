@@ -2,8 +2,6 @@
 #define USERSPACE
 
 #include "quantum.h"
-
-// #include QMK_KEYBOARD_H
 #include "zefryuuko.h"
 
 // KEY CODES
