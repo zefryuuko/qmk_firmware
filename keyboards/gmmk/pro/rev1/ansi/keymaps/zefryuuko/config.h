@@ -1,3 +1,6 @@
+#define FORCE_NKRO
+#define USB_POLLING_INTERVAL_MS 1   // Set 1000Hz polling rate
+
 #ifdef RGB_MATRIX_ENABLE
     #define RGBLIGHT_HUE_STEP 8
     #define RGBLIGHT_SAT_STEP 8
